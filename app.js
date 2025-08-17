@@ -18,6 +18,7 @@ const elements = {
     startBtn: document.getElementById('start-btn'),
     nextBtn: document.getElementById('next-btn'),
     restartBtn: document.getElementById('restart-btn'),
+    menuBtn: document.getElementById('menu-btn'),
     questionNumber: document.getElementById('question-number'),
     currentLevel: document.getElementById('current-level'),
     score: document.getElementById('score'),
@@ -252,10 +253,42 @@ function restartQuiz() {
     startQuiz();
 }
 
+// メニューに戻る
+function returnToMenu() {
+    // クイズ進行中の場合は確認
+    if (screens.quiz.classList.contains('active') && quizApp.currentQuestion > 0) {
+        const confirmReturn = confirm('クイズを中断してメニューに戻りますか？\n現在の進捗は失われます。');
+        if (!confirmReturn) {
+            return;
+        }
+    }
+    
+    // スタート画面に戻る
+    initQuiz();
+    showScreen('start');
+}
+
+// メニューボタンの表示/非表示
+function updateMenuVisibility() {
+    if (screens.start.classList.contains('active')) {
+        elements.menuBtn.style.display = 'none';
+    } else {
+        elements.menuBtn.style.display = 'block';
+    }
+}
+
+// 画面切り替え時にメニューボタンの表示を更新
+const originalShowScreen = showScreen;
+showScreen = function(screenName) {
+    originalShowScreen(screenName);
+    updateMenuVisibility();
+};
+
 // イベントリスナーの設定
 elements.startBtn.addEventListener('click', startQuiz);
 elements.nextBtn.addEventListener('click', nextQuestion);
 elements.restartBtn.addEventListener('click', restartQuiz);
+elements.menuBtn.addEventListener('click', returnToMenu);
 
 // キーボードショートカット
 document.addEventListener('keydown', (e) => {
@@ -266,3 +299,4 @@ document.addEventListener('keydown', (e) => {
 
 // 初期化
 initQuiz();
+updateMenuVisibility();
