@@ -524,6 +524,11 @@ main {
     font-size: 0.85em;
 }
 
+.question-level.超初級 {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
 .question-level.初級 {
     background: #fff3e0;
     color: #f57c00;
