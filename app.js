@@ -3,7 +3,6 @@ const quizApp = {
     currentQuestion: 0,
     score: 0,
     answers: [],
-    shuffledQuestions: [],
     categoryScores: {}
 };
 
@@ -11,14 +10,18 @@ const quizApp = {
 const screens = {
     start: document.getElementById('start-screen'),
     quiz: document.getElementById('quiz-screen'),
-    result: document.getElementById('result-screen')
+    result: document.getElementById('result-screen'),
+    list: document.getElementById('list-screen')
 };
 
 const elements = {
     startBtn: document.getElementById('start-btn'),
+    listBtn: document.getElementById('list-btn'),
+    startFromListBtn: document.getElementById('start-from-list-btn'),
     nextBtn: document.getElementById('next-btn'),
     restartBtn: document.getElementById('restart-btn'),
     menuBtn: document.getElementById('menu-btn'),
+    questionList: document.getElementById('question-list'),
     questionNumber: document.getElementById('question-number'),
     currentLevel: document.getElementById('current-level'),
     score: document.getElementById('score'),
@@ -42,19 +45,7 @@ function initQuiz() {
     quizApp.answers = [];
     quizApp.categoryScores = {};
     
-    // 問題をシャッフル（レベル順は保持）
-    quizApp.shuffledQuestions = shuffleQuestionsWithinLevels();
-    
     showScreen('start');
-}
-
-// レベルごとに問題をシャッフル
-function shuffleQuestionsWithinLevels() {
-    const beginner = questions.filter(q => q.level === "初級").sort(() => Math.random() - 0.5);
-    const intermediate = questions.filter(q => q.level === "中級").sort(() => Math.random() - 0.5);
-    const advanced = questions.filter(q => q.level === "上級").sort(() => Math.random() - 0.5);
-    
-    return [...beginner, ...intermediate, ...advanced];
 }
 
 // 画面切り替え
@@ -73,7 +64,7 @@ function startQuiz() {
 
 // 問題の読み込み
 function loadQuestion() {
-    const question = quizApp.shuffledQuestions[quizApp.currentQuestion];
+    const question = questions[quizApp.currentQuestion];
     
     // 進捗状況の更新
     elements.questionNumber.textContent = quizApp.currentQuestion + 1;
@@ -119,7 +110,7 @@ function displayOptions(question) {
 
 // 回答の選択
 function selectAnswer(selectedIndex) {
-    const question = quizApp.shuffledQuestions[quizApp.currentQuestion];
+    const question = questions[quizApp.currentQuestion];
     const isCorrect = selectedIndex === question.correct;
     
     // 回答を記録
@@ -176,11 +167,18 @@ function showFeedback(isCorrect, explanation) {
 function nextQuestion() {
     quizApp.currentQuestion++;
     
-    if (quizApp.currentQuestion < quizApp.shuffledQuestions.length) {
+    if (quizApp.currentQuestion < questions.length) {
         loadQuestion();
     } else {
         showResults();
     }
+}
+
+// 特定の問題へジャンプ
+function jumpToQuestion(questionIndex) {
+    quizApp.currentQuestion = questionIndex;
+    showScreen('quiz');
+    loadQuestion();
 }
 
 // TODO(human): スコア計算アルゴリズムの実装
@@ -225,7 +223,7 @@ function displayCategoryScores() {
 
 // 達成度メッセージの表示
 function displayAchievement() {
-    const percentage = (quizApp.score / quizApp.shuffledQuestions.length) * 100;
+    const percentage = (quizApp.score / questions.length) * 100;
     let message = '';
     let className = '';
     
@@ -284,11 +282,71 @@ showScreen = function(screenName) {
     updateMenuVisibility();
 };
 
+// 問題リストの表示
+function showQuestionList() {
+    showScreen('list');
+    renderQuestionList('all');
+}
+
+// 問題リストのレンダリング
+function renderQuestionList(filter = 'all') {
+    elements.questionList.innerHTML = '';
+    
+    questions.forEach((question, index) => {
+        if (filter !== 'all' && question.level !== filter) {
+            return;
+        }
+        
+        const answered = quizApp.answers.find(a => a.questionId === question.id);
+        const item = document.createElement('div');
+        item.className = 'question-item';
+        
+        if (answered) {
+            item.classList.add('answered');
+            item.classList.add(answered.isCorrect ? 'correct' : 'incorrect');
+        }
+        
+        item.innerHTML = `
+            <div class="question-number-badge">${index + 1}</div>
+            <div class="question-info">
+                <div class="question-title">${question.question}</div>
+                <div class="question-meta">
+                    <span class="question-level ${question.level}">${question.level}</span>
+                    <span class="question-category">${question.category}</span>
+                </div>
+            </div>
+            <div class="question-status">
+                ${answered ? (answered.isCorrect ? '✅' : '❌') : ''}
+            </div>
+        `;
+        
+        item.addEventListener('click', () => jumpToQuestion(index));
+        elements.questionList.appendChild(item);
+    });
+}
+
+// フィルターボタンの設定
+function setupFilterButtons() {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderQuestionList(btn.dataset.filter);
+        });
+    });
+}
+
 // イベントリスナーの設定
 elements.startBtn.addEventListener('click', startQuiz);
+elements.listBtn.addEventListener('click', showQuestionList);
+elements.startFromListBtn.addEventListener('click', startQuiz);
 elements.nextBtn.addEventListener('click', nextQuestion);
 elements.restartBtn.addEventListener('click', restartQuiz);
 elements.menuBtn.addEventListener('click', returnToMenu);
+
+// フィルターボタンの初期化
+setupFilterButtons();
 
 // キーボードショートカット
 document.addEventListener('keydown', (e) => {

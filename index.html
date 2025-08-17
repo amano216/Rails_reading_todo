@@ -42,7 +42,30 @@
                             <p>パフォーマンス、セキュリティ、高度な機能</p>
                         </div>
                     </div>
-                    <button id="start-btn" class="btn btn-primary">クイズを開始</button>
+                    <div class="button-group">
+                        <button id="start-btn" class="btn btn-primary">クイズを開始</button>
+                        <button id="list-btn" class="btn btn-secondary">問題リストを見る</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 問題リスト画面 -->
+            <div id="list-screen" class="screen">
+                <div class="list-header">
+                    <h2>📚 問題リスト</h2>
+                    <p>全100問の問題一覧です。問題をクリックして直接ジャンプできます。</p>
+                </div>
+                <div class="list-filters">
+                    <button class="filter-btn active" data-filter="all">全て</button>
+                    <button class="filter-btn" data-filter="初級">初級</button>
+                    <button class="filter-btn" data-filter="中級">中級</button>
+                    <button class="filter-btn" data-filter="上級">上級</button>
+                </div>
+                <div id="question-list" class="question-list">
+                    <!-- 問題リストがここに動的に生成される -->
+                </div>
+                <div class="list-actions">
+                    <button id="start-from-list-btn" class="btn btn-primary">最初から開始</button>
                 </div>
             </div>
 
