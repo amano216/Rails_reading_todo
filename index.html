@@ -3,230 +3,95 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rails読解力向上クイズ</title>
+    <title>Rails Reading Quiz - 100問チャレンジ</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Rails読解力向上クイズ</h1>
+            <h1>🚂 Rails Reading Quiz</h1>
             <div class="stats">
-                <div class="level-indicator">
-                    <span id="current-level">初級</span>
-                </div>
-                <div class="progress-info">
-                    <span id="question-number">問題 1 / 100</span>
-                    <div class="score">
-                        <span id="correct-count">正解: 0</span>
-                        <span id="incorrect-count">不正解: 0</span>
-                    </div>
-                </div>
+                <span class="level-indicator">レベル: <span id="current-level">初級</span></span>
+                <span class="progress">問題: <span id="question-number">1</span> / 100</span>
+                <span class="score">スコア: <span id="score">0</span></span>
             </div>
         </header>
 
-        <!-- メニューシステム -->
-        <div id="menu-screen" class="menu-screen">
-            <div class="menu-container">
-                <h2>学習メニュー</h2>
-                
-                <div class="menu-options">
-                    <button class="menu-btn primary" id="start-sequential">
-                        <span class="menu-icon">📚</span>
-                        <span class="menu-title">順番に学習</span>
-                        <span class="menu-desc">問題1から順番に全100問を解く</span>
-                    </button>
-                    
-                    <button class="menu-btn" id="start-by-level">
-                        <span class="menu-icon">📊</span>
-                        <span class="menu-title">レベル別学習</span>
-                        <span class="menu-desc">初級・中級・上級から選択</span>
-                    </button>
-                    
-                    <button class="menu-btn" id="start-by-category">
-                        <span class="menu-icon">🏷️</span>
-                        <span class="menu-title">カテゴリ別学習</span>
-                        <span class="menu-desc">特定のトピックを集中学習</span>
-                    </button>
-                    
-                    <button class="menu-btn" id="start-random">
-                        <span class="menu-icon">🎲</span>
-                        <span class="menu-title">ランダム出題</span>
-                        <span class="menu-desc">全問題からランダムに出題</span>
-                    </button>
-                    
-                    <button class="menu-btn" id="continue-learning">
-                        <span class="menu-icon">▶️</span>
-                        <span class="menu-title">学習を続ける</span>
-                        <span class="menu-desc">前回の続きから再開</span>
-                    </button>
-                    
-                    <button class="menu-btn warning" id="review-mistakes">
-                        <span class="menu-icon">📝</span>
-                        <span class="menu-title">間違えた問題を復習</span>
-                        <span class="menu-desc"><span id="mistake-count">0</span>問の復習が必要です</span>
-                    </button>
-                </div>
-
-                <!-- レベル選択サブメニュー -->
-                <div id="level-submenu" class="submenu" style="display: none;">
-                    <h3>レベルを選択</h3>
-                    <div class="submenu-options">
-                        <button class="submenu-btn" data-level="beginner">
-                            <span class="level-badge beginner">初級</span>
-                            <span>基礎知識（50問）</span>
-                        </button>
-                        <button class="submenu-btn" data-level="intermediate">
-                            <span class="level-badge intermediate">中級</span>
-                            <span>実践的な知識（35問）</span>
-                        </button>
-                        <button class="submenu-btn" data-level="advanced">
-                            <span class="level-badge advanced">上級</span>
-                            <span>高度な知識（15問）</span>
-                        </button>
-                    </div>
-                    <button class="back-btn" id="back-from-level">← 戻る</button>
-                </div>
-
-                <!-- カテゴリ選択サブメニュー -->
-                <div id="category-submenu" class="submenu" style="display: none;">
-                    <h3>カテゴリを選択</h3>
-                    <div class="category-grid">
-                        <button class="category-btn" data-category="routing">
-                            <span class="category-icon">🛤️</span>
-                            <span>ルーティング</span>
-                        </button>
-                        <button class="category-btn" data-category="activerecord">
-                            <span class="category-icon">💾</span>
-                            <span>Active Record</span>
-                        </button>
-                        <button class="category-btn" data-category="mvc">
-                            <span class="category-icon">🏗️</span>
-                            <span>MVCパターン</span>
-                        </button>
-                        <button class="category-btn" data-category="testing">
-                            <span class="category-icon">🧪</span>
-                            <span>テスト</span>
-                        </button>
-                        <button class="category-btn" data-category="security">
-                            <span class="category-icon">🔒</span>
-                            <span>セキュリティ</span>
-                        </button>
-                        <button class="category-btn" data-category="performance">
-                            <span class="category-icon">⚡</span>
-                            <span>パフォーマンス</span>
-                        </button>
-                        <button class="category-btn" data-category="deployment">
-                            <span class="category-icon">🚀</span>
-                            <span>デプロイ</span>
-                        </button>
-                        <button class="category-btn" data-category="advanced">
-                            <span class="category-icon">🎓</span>
-                            <span>高度な機能</span>
-                        </button>
-                    </div>
-                    <button class="back-btn" id="back-from-category">← 戻る</button>
-                </div>
-
-                <!-- 統計情報 -->
-                <div class="statistics">
-                    <h3>学習統計</h3>
-                    <div class="stat-grid">
-                        <div class="stat-item">
-                            <span class="stat-label">総問題数</span>
-                            <span class="stat-value">100問</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">解答済み</span>
-                            <span class="stat-value" id="answered-count">0問</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">正答率</span>
-                            <span class="stat-value" id="accuracy-rate">--%</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-label">達成度</span>
-                            <span class="stat-value" id="completion-rate">0%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <main>
-            <div class="quiz-container">
-                <div class="question-section">
-                    <h2 id="question-title">問1. シンボルの理解</h2>
-                    <div class="code-block">
-                        <pre><code id="code-snippet">user = { name: "田中", age: 25 }</code></pre>
+            <!-- スタート画面 -->
+            <div id="start-screen" class="screen active">
+                <div class="welcome-card">
+                    <h2>Ruby on Rails 読解力テスト</h2>
+                    <p>初級から上級まで100問のクイズに挑戦しよう！</p>
+                    <div class="level-info">
+                        <div class="level-card">
+                            <h3>📗 初級 (1-35問)</h3>
+                            <p>基本的な概念とMVCアーキテクチャ</p>
+                        </div>
+                        <div class="level-card">
+                            <h3>📘 中級 (36-70問)</h3>
+                            <p>ActiveRecord、ルーティング、バリデーション</p>
+                        </div>
+                        <div class="level-card">
+                            <h3>📕 上級 (71-100問)</h3>
+                            <p>パフォーマンス、セキュリティ、高度な機能</p>
+                        </div>
                     </div>
-                    <p id="question-text">このコードで`:name`は何を表していますか？</p>
-                </div>
-
-                <div class="options-section">
-                    <button class="option-btn" data-option="A">
-                        <span class="option-label">A)</span>
-                        <span class="option-text">文字列 "name"</span>
-                    </button>
-                    <button class="option-btn" data-option="B">
-                        <span class="option-label">B)</span>
-                        <span class="option-text">変数 name</span>
-                    </button>
-                    <button class="option-btn" data-option="C">
-                        <span class="option-label">C)</span>
-                        <span class="option-text">シンボル :name</span>
-                    </button>
-                    <button class="option-btn" data-option="D">
-                        <span class="option-label">D)</span>
-                        <span class="option-text">メソッド name</span>
-                    </button>
-                </div>
-
-                <div class="feedback-section" id="feedback" style="display: none;">
-                    <div class="feedback-content">
-                        <p id="feedback-message"></p>
-                        <div class="explanation" id="explanation"></div>
-                    </div>
-                    <button id="next-btn" class="next-btn">次の問題へ</button>
+                    <button id="start-btn" class="btn btn-primary">クイズを開始</button>
                 </div>
             </div>
 
-            <div class="level-progress">
-                <h3>レベル別進行状況</h3>
-                <div class="level-bars">
-                    <div class="level-bar">
-                        <label>初級 (1-50)</label>
-                        <div class="progress-bar">
-                            <div class="progress-fill beginner" id="beginner-progress"></div>
-                        </div>
-                        <span id="beginner-score">0/50</span>
+            <!-- クイズ画面 -->
+            <div id="quiz-screen" class="screen">
+                <div class="quiz-card">
+                    <div class="question-header">
+                        <span class="question-type" id="question-type">選択問題</span>
+                        <span class="difficulty" id="difficulty">初級</span>
                     </div>
-                    <div class="level-bar">
-                        <label>中級 (51-85)</label>
-                        <div class="progress-bar">
-                            <div class="progress-fill intermediate" id="intermediate-progress"></div>
-                        </div>
-                        <span id="intermediate-score">0/35</span>
+                    <div class="question" id="question-text">
+                        <!-- 問題文がここに表示される -->
                     </div>
-                    <div class="level-bar">
-                        <label>上級 (86-100)</label>
-                        <div class="progress-bar">
-                            <div class="progress-fill advanced" id="advanced-progress"></div>
-                        </div>
-                        <span id="advanced-score">0/15</span>
+                    <div class="code-block" id="code-block" style="display: none;">
+                        <pre><code id="code-content"></code></pre>
                     </div>
+                    <div class="options" id="options">
+                        <!-- 選択肢がここに表示される -->
+                    </div>
+                    <div class="feedback" id="feedback" style="display: none;">
+                        <div class="feedback-content" id="feedback-content"></div>
+                        <button id="next-btn" class="btn btn-secondary">次の問題へ</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 結果画面 -->
+            <div id="result-screen" class="screen">
+                <div class="result-card">
+                    <h2>🎉 クイズ完了！</h2>
+                    <div class="final-score">
+                        <p class="score-text">最終スコア</p>
+                        <p class="score-number"><span id="final-score">0</span> / 100</p>
+                    </div>
+                    <div class="performance-summary">
+                        <h3>カテゴリ別成績</h3>
+                        <div id="category-scores">
+                            <!-- カテゴリ別スコアがここに表示される -->
+                        </div>
+                    </div>
+                    <div class="achievement" id="achievement">
+                        <!-- 達成度メッセージ -->
+                    </div>
+                    <button id="restart-btn" class="btn btn-primary">もう一度挑戦</button>
                 </div>
             </div>
         </main>
 
         <footer>
-            <button id="menu-btn" class="control-btn">メニューへ戻る</button>
-            <button id="reset-btn" class="control-btn">最初から</button>
-            <button id="review-btn" class="control-btn">間違えた問題を復習</button>
-            <button id="skip-btn" class="control-btn">この問題をスキップ</button>
+            <p>Rails学習の理解度を測る100問クイズ</p>
         </footer>
     </div>
 
-    <script src="quiz-data.js"></script>
+    <script src="questions.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
