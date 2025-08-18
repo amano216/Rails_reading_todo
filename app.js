@@ -62,6 +62,24 @@ function startQuiz() {
     loadQuestion();
 }
 
+// 選択肢をシャッフルする関数
+function shuffleOptions(question) {
+    // 各選択肢に元のインデックスを付与
+    const optionsWithIndex = question.options.map((text, index) => ({
+        text: text,
+        originalIndex: index
+    }));
+    
+    // Fisher-Yates シャッフルアルゴリズム
+    const shuffled = [...optionsWithIndex];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    
+    return shuffled;
+}
+
 // 問題の読み込み
 function loadQuestion() {
     const question = questions[quizApp.currentQuestion];
@@ -98,25 +116,29 @@ function loadQuestion() {
 function displayOptions(question) {
     elements.options.innerHTML = '';
     
-    question.options.forEach((option, index) => {
+    // 選択肢をシャッフル
+    const shuffledOptions = shuffleOptions(question);
+    
+    shuffledOptions.forEach((option, index) => {
         const optionDiv = document.createElement('div');
         optionDiv.className = 'option';
-        optionDiv.textContent = option;
+        optionDiv.textContent = option.text;
         optionDiv.dataset.index = index;
-        optionDiv.addEventListener('click', () => selectAnswer(index));
+        optionDiv.dataset.originalIndex = option.originalIndex;
+        optionDiv.addEventListener('click', () => selectAnswer(option.originalIndex));
         elements.options.appendChild(optionDiv);
     });
 }
 
 // 回答の選択
-function selectAnswer(selectedIndex) {
+function selectAnswer(originalIndex) {
     const question = questions[quizApp.currentQuestion];
-    const isCorrect = selectedIndex === question.correct;
+    const isCorrect = originalIndex === question.correct;
     
     // 回答を記録
     quizApp.answers.push({
         questionId: question.id,
-        selected: selectedIndex,
+        selected: originalIndex,
         correct: question.correct,
         isCorrect: isCorrect
     });
@@ -134,12 +156,13 @@ function selectAnswer(selectedIndex) {
     
     // 選択肢のスタイル更新
     const options = document.querySelectorAll('.option');
-    options.forEach((option, index) => {
+    options.forEach((option) => {
         option.style.pointerEvents = 'none';
-        if (index === selectedIndex) {
+        const optionOriginalIndex = parseInt(option.dataset.originalIndex);
+        if (optionOriginalIndex === originalIndex) {
             option.classList.add(isCorrect ? 'correct' : 'incorrect');
         }
-        if (index === question.correct) {
+        if (optionOriginalIndex === question.correct) {
             option.classList.add('correct');
         }
     });
