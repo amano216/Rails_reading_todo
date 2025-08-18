@@ -2525,5 +2525,1697 @@ const questions = [
         ],
         correct: 0,
         explanation: "技術選定では、チームのスキルセット、長期的な保守性、ビジネス要件との適合性を重視します。"
+    },
+
+    // ========== 追加: Active Job編 (181-200) ==========
+    {
+        id: 181,
+        level: "中級",
+        category: "Active Job",
+        question: "Active Jobの主な目的は何ですか？",
+        options: [
+            "バックグラウンドジョブの実行を抽象化する",
+            "データベースの管理",
+            "ビューのレンダリング",
+            "ルーティングの設定"
+        ],
+        correct: 0,
+        explanation: "Active Jobは様々なキューイングバックエンドに対して統一的なインターフェースを提供します。"
+    },
+    {
+        id: 182,
+        level: "中級",
+        category: "Active Job",
+        question: "Active Jobでよく使用されるバックエンドは？",
+        options: [
+            "Sidekiq",
+            "MySQL",
+            "PostgreSQL",
+            "MongoDB"
+        ],
+        correct: 0,
+        explanation: "SidekiqはRedisベースの高性能なバックグラウンドジョブ処理システムです。"
+    },
+    {
+        id: 183,
+        level: "中級",
+        category: "Active Job",
+        question: "ジョブをキューに追加するメソッドは？",
+        options: [
+            "perform_later",
+            "perform_now",
+            "execute",
+            "run"
+        ],
+        correct: 0,
+        explanation: "perform_laterメソッドでジョブを非同期実行のキューに追加します。"
+    },
+    {
+        id: 184,
+        level: "上級",
+        category: "Active Job",
+        question: "ジョブの優先度を設定するには？",
+        options: [
+            "queue_asメソッドで優先度を指定",
+            "priorityメソッドを使用",
+            "orderメソッドを使用",
+            "設定できない"
+        ],
+        correct: 0,
+        explanation: "queue_asメソッドでキュー名を指定し、優先度を制御できます。"
+    },
+    {
+        id: 185,
+        level: "上級",
+        category: "Active Job",
+        question: "ジョブのリトライ設定を行うには？",
+        options: [
+            "retry_onメソッドで例外と試行回数を指定",
+            "retryメソッドを使用",
+            "repeat_onメソッドを使用",
+            "設定できない"
+        ],
+        correct: 0,
+        explanation: "retry_onメソッドで特定の例外に対するリトライ動作を設定できます。"
+    },
+    {
+        id: 186,
+        level: "中級",
+        category: "Action Cable",
+        question: "Action Cableの主な用途は？",
+        options: [
+            "WebSocketを使ったリアルタイム通信",
+            "メール送信",
+            "画像処理",
+            "データベース接続"
+        ],
+        correct: 0,
+        explanation: "Action CableはWebSocketを使用してリアルタイム機能を実装するためのフレームワークです。"
+    },
+    {
+        id: 187,
+        level: "中級",
+        category: "Action Cable",
+        question: "Action Cableの接続単位は？",
+        options: [
+            "チャンネル",
+            "コントローラー",
+            "モデル",
+            "ビュー"
+        ],
+        correct: 0,
+        explanation: "チャンネルは特定のトピックに関するWebSocket接続を管理します。"
+    },
+    {
+        id: 188,
+        level: "上級",
+        category: "Action Cable",
+        question: "Action Cableでブロードキャストを行うメソッドは？",
+        options: [
+            "ActionCable.server.broadcast",
+            "ActionCable.send",
+            "ActionCable.emit",
+            "ActionCable.publish"
+        ],
+        correct: 0,
+        explanation: "ActionCable.server.broadcastメソッドで全購読者にメッセージを送信します。"
+    },
+    {
+        id: 189,
+        level: "中級",
+        category: "Rails API",
+        question: "Rails APIモードの特徴は？",
+        options: [
+            "ビュー層を除外してAPIに特化",
+            "データベースを使わない",
+            "JavaScriptが不要",
+            "テストが不要"
+        ],
+        correct: 0,
+        explanation: "Rails APIモードはビュー関連の機能を除外し、JSON APIの構築に最適化されています。"
+    },
+    {
+        id: 190,
+        level: "中級",
+        category: "Rails API",
+        question: "APIでよく使用される認証方式は？",
+        options: [
+            "JWT（JSON Web Token）",
+            "HTML forms",
+            "Cookies only",
+            "Session only"
+        ],
+        correct: 0,
+        explanation: "JWTはステートレスな認証を実現し、APIに適しています。"
+    },
+    {
+        id: 191,
+        level: "上級",
+        category: "Rails API",
+        question: "APIのバージョニング戦略として適切なのは？",
+        options: [
+            "URLパスやヘッダーでバージョン管理",
+            "バージョン管理しない",
+            "毎回新しいアプリを作る",
+            "古いバージョンを削除する"
+        ],
+        correct: 0,
+        explanation: "URLパス（/api/v1/）やAcceptヘッダーでAPIバージョンを管理します。"
+    },
+    {
+        id: 192,
+        level: "中級",
+        category: "Webpacker",
+        question: "Webpackerの役割は？",
+        options: [
+            "JavaScriptとCSSの管理とバンドル",
+            "データベース管理",
+            "メール送信",
+            "キャッシュ管理"
+        ],
+        correct: 0,
+        explanation: "WebpackerはWebpackを使用してフロントエンドアセットを管理します。"
+    },
+    {
+        id: 193,
+        level: "中級",
+        category: "Webpacker",
+        question: "Rails 7でWebpackerの代替として推奨されるのは？",
+        options: [
+            "Import maps または esbuild",
+            "jQuery",
+            "Sprockets のみ",
+            "何も使わない"
+        ],
+        correct: 0,
+        explanation: "Rails 7ではImport mapsやesbuildが推奨されています。"
+    },
+    {
+        id: 194,
+        level: "初級",
+        category: "Rails環境",
+        question: "Railsの環境設定ファイルの場所は？",
+        options: [
+            "config/environments/",
+            "app/environments/",
+            "lib/environments/",
+            "db/environments/"
+        ],
+        correct: 0,
+        explanation: "環境ごとの設定はconfig/environments/ディレクトリに配置されます。"
+    },
+    {
+        id: 195,
+        level: "中級",
+        category: "Rails環境",
+        question: "環境変数を管理する一般的なgemは？",
+        options: [
+            "dotenv-rails",
+            "devise",
+            "rspec",
+            "capybara"
+        ],
+        correct: 0,
+        explanation: "dotenv-railsは.envファイルから環境変数を読み込むgemです。"
+    },
+    {
+        id: 196,
+        level: "上級",
+        category: "Rails環境",
+        question: "Rails.credentials の利点は？",
+        options: [
+            "暗号化された秘密情報の管理",
+            "データベースの高速化",
+            "ビューの簡略化",
+            "ルーティングの自動化"
+        ],
+        correct: 0,
+        explanation: "Rails.credentialsは秘密情報を暗号化して安全に管理できます。"
+    },
+    {
+        id: 197,
+        level: "中級",
+        category: "データベース",
+        question: "N+1問題を検出するgemは？",
+        options: [
+            "bullet",
+            "rubocop",
+            "pry",
+            "byebug"
+        ],
+        correct: 0,
+        explanation: "bulletはN+1クエリを検出し、パフォーマンス問題を防ぎます。"
+    },
+    {
+        id: 198,
+        level: "上級",
+        category: "データベース",
+        question: "データベースのインデックスを追加する理由は？",
+        options: [
+            "検索クエリの高速化",
+            "データの削除",
+            "テーブルの作成",
+            "カラムの追加"
+        ],
+        correct: 0,
+        explanation: "インデックスは特定のカラムでの検索を高速化します。"
+    },
+    {
+        id: 199,
+        level: "上級",
+        category: "パフォーマンス",
+        question: "Railsアプリのプロファイリングツールは？",
+        options: [
+            "rack-mini-profiler",
+            "devise",
+            "cancancan",
+            "paperclip"
+        ],
+        correct: 0,
+        explanation: "rack-mini-profilerはページロード時間やSQLクエリを分析します。"
+    },
+    {
+        id: 200,
+        level: "上級",
+        category: "パフォーマンス",
+        question: "フラグメントキャッシュの目的は？",
+        options: [
+            "ビューの一部をキャッシュして高速化",
+            "データベース全体をキャッシュ",
+            "JavaScriptをキャッシュ",
+            "画像をキャッシュ"
+        ],
+        correct: 0,
+        explanation: "フラグメントキャッシュはビューの重い部分をキャッシュして表示を高速化します。"
+    },
+
+    // ========== 追加: Active Storage編 (201-220) ==========
+    {
+        id: 201,
+        level: "中級",
+        category: "Active Storage",
+        question: "Active Storageの主な用途は？",
+        options: [
+            "ファイルアップロードの管理",
+            "データベースの管理",
+            "メールの送信",
+            "キャッシュの管理"
+        ],
+        correct: 0,
+        explanation: "Active Storageはクラウドストレージサービスへのファイルアップロードを簡単にします。"
+    },
+    {
+        id: 202,
+        level: "中級",
+        category: "Active Storage",
+        question: "Active Storageで画像のリサイズを行うには？",
+        options: [
+            "variantメソッドを使用",
+            "resizeメソッドを使用",
+            "scaleメソッドを使用",
+            "transformメソッドを使用"
+        ],
+        correct: 0,
+        explanation: "variantメソッドで画像の変換処理を定義できます。"
+    },
+    {
+        id: 203,
+        level: "上級",
+        category: "Active Storage",
+        question: "ダイレクトアップロードの利点は？",
+        options: [
+            "クライアントから直接クラウドにアップロード",
+            "サーバーの負荷が増える",
+            "アップロード速度が遅くなる",
+            "セキュリティが低下する"
+        ],
+        correct: 0,
+        explanation: "ダイレクトアップロードはサーバーを経由せずクラウドに直接アップロードします。"
+    },
+    {
+        id: 204,
+        level: "中級",
+        category: "Action Text",
+        question: "Action Textの用途は？",
+        options: [
+            "リッチテキストコンテンツの管理",
+            "プレーンテキストのみ",
+            "コードエディタ",
+            "画像編集"
+        ],
+        correct: 0,
+        explanation: "Action TextはWYSIWYGエディタでリッチテキストコンテンツを扱います。"
+    },
+    {
+        id: 205,
+        level: "中級",
+        category: "Action Text",
+        question: "Action Textが使用するエディタは？",
+        options: [
+            "Trix",
+            "TinyMCE",
+            "CKEditor",
+            "Quill"
+        ],
+        correct: 0,
+        explanation: "Action TextはBasecampが開発したTrixエディタを使用します。"
+    },
+    {
+        id: 206,
+        level: "初級",
+        category: "Railsコマンド",
+        question: "Railsコンソールを起動するコマンドは？",
+        options: [
+            "rails console",
+            "rails server",
+            "rails new",
+            "rails generate"
+        ],
+        correct: 0,
+        explanation: "rails console（またはrails c）でインタラクティブなRuby環境を起動します。"
+    },
+    {
+        id: 207,
+        level: "初級",
+        category: "Railsコマンド",
+        question: "データベースをリセットするコマンドは？",
+        options: [
+            "rails db:reset",
+            "rails db:create",
+            "rails db:migrate",
+            "rails db:seed"
+        ],
+        correct: 0,
+        explanation: "rails db:resetはデータベースを削除、作成、マイグレーション、シードを実行します。"
+    },
+    {
+        id: 208,
+        level: "中級",
+        category: "Railsコマンド",
+        question: "特定の環境でコマンドを実行するには？",
+        options: [
+            "RAILS_ENV=production を前置",
+            "rails production",
+            "--production オプション",
+            "config/production"
+        ],
+        correct: 0,
+        explanation: "RAILS_ENV環境変数で実行環境を指定します。"
+    },
+    {
+        id: 209,
+        level: "中級",
+        category: "Rails設定",
+        question: "config/application.rbの役割は？",
+        options: [
+            "アプリケーション全体の設定",
+            "データベース設定のみ",
+            "ルーティング設定のみ",
+            "ビューの設定のみ"
+        ],
+        correct: 0,
+        explanation: "config/application.rbはアプリケーション全体に影響する設定を記述します。"
+    },
+    {
+        id: 210,
+        level: "中級",
+        category: "Rails設定",
+        question: "タイムゾーンを設定するには？",
+        options: [
+            "config.time_zone = 'Tokyo'",
+            "Rails.timezone = 'Tokyo'",
+            "Time.zone = 'Tokyo'",
+            "設定できない"
+        ],
+        correct: 0,
+        explanation: "config.time_zoneでアプリケーションのデフォルトタイムゾーンを設定します。"
+    },
+    {
+        id: 211,
+        level: "上級",
+        category: "Rails設定",
+        question: "eager_loadingを有効にする環境は？",
+        options: [
+            "production環境",
+            "development環境",
+            "test環境",
+            "すべての環境"
+        ],
+        correct: 0,
+        explanation: "production環境ではeager_loadingで起動時に全クラスを読み込みます。"
+    },
+    {
+        id: 212,
+        level: "中級",
+        category: "メール送信",
+        question: "Action Mailerでメールレイアウトを設定するには？",
+        options: [
+            "layout 'mailer'",
+            "template 'mailer'",
+            "render 'mailer'",
+            "view 'mailer'"
+        ],
+        correct: 0,
+        explanation: "layoutメソッドでメーラーのレイアウトファイルを指定します。"
+    },
+    {
+        id: 213,
+        level: "上級",
+        category: "メール送信",
+        question: "メール送信をテストする際のベストプラクティスは？",
+        options: [
+            "配信モードをtestに設定",
+            "実際にメールを送信",
+            "メール機能を無効化",
+            "テストしない"
+        ],
+        correct: 0,
+        explanation: "test環境では配信モードをtestにしてメールを実際には送信しません。"
+    },
+    {
+        id: 214,
+        level: "中級",
+        category: "国際化",
+        question: "Rails国際化ファイルの場所は？",
+        options: [
+            "config/locales/",
+            "app/locales/",
+            "lib/locales/",
+            "public/locales/"
+        ],
+        correct: 0,
+        explanation: "翻訳ファイルはconfig/locales/ディレクトリに配置します。"
+    },
+    {
+        id: 215,
+        level: "中級",
+        category: "国際化",
+        question: "翻訳テキストを表示するヘルパーは？",
+        options: [
+            "t() または I18n.t()",
+            "translate_text()",
+            "get_translation()",
+            "text()"
+        ],
+        correct: 0,
+        explanation: "t()ヘルパーまたはI18n.t()で翻訳テキストを取得します。"
+    },
+    {
+        id: 216,
+        level: "上級",
+        category: "国際化",
+        question: "動的な値を翻訳に含めるには？",
+        options: [
+            "プレースホルダーを使用",
+            "文字列連結",
+            "別々に翻訳",
+            "JavaScriptで処理"
+        ],
+        correct: 0,
+        explanation: "%{variable}形式のプレースホルダーで動的な値を埋め込みます。"
+    },
+    {
+        id: 217,
+        level: "上級",
+        category: "デプロイ",
+        question: "Capistranoの役割は？",
+        options: [
+            "自動デプロイツール",
+            "テストフレームワーク",
+            "データベース管理",
+            "ログ管理"
+        ],
+        correct: 0,
+        explanation: "Capistranoは自動デプロイメントを実現するツールです。"
+    },
+    {
+        id: 218,
+        level: "上級",
+        category: "デプロイ",
+        question: "ゼロダウンタイムデプロイの方法は？",
+        options: [
+            "ローリングデプロイやブルーグリーン",
+            "サーバー停止後にデプロイ",
+            "手動でファイルコピー",
+            "FTPアップロード"
+        ],
+        correct: 0,
+        explanation: "ローリングデプロイやブルーグリーンデプロイでサービスを停止せずに更新します。"
+    },
+    {
+        id: 219,
+        level: "中級",
+        category: "モニタリング",
+        question: "Railsアプリのエラー監視サービスは？",
+        options: [
+            "Sentry, Rollbar, Bugsnag",
+            "Google Analytics",
+            "GitHub",
+            "Slack"
+        ],
+        correct: 0,
+        explanation: "Sentry等のサービスでエラーをリアルタイムで監視・通知します。"
+    },
+    {
+        id: 220,
+        level: "上級",
+        category: "モニタリング",
+        question: "APM（Application Performance Monitoring）ツールの例は？",
+        options: [
+            "New Relic, Datadog, Scout",
+            "RSpec, Minitest",
+            "Rubocop, Reek",
+            "Git, SVN"
+        ],
+        correct: 0,
+        explanation: "APMツールはアプリケーションのパフォーマンスを詳細に監視します。"
+    },
+
+    // ========== 追加: Rails 7新機能編 (221-240) ==========
+    {
+        id: 221,
+        level: "上級",
+        category: "Rails 7",
+        question: "Rails 7の Hotwire に含まれる技術は？",
+        options: [
+            "Turbo と Stimulus",
+            "jQuery と Bootstrap",
+            "React と Redux",
+            "Vue と Vuex"
+        ],
+        correct: 0,
+        explanation: "HotwireはTurboとStimulusを組み合わせてSPA風の体験を提供します。"
+    },
+    {
+        id: 222,
+        level: "上級",
+        category: "Rails 7",
+        question: "Turbo Framesの利点は？",
+        options: [
+            "ページの一部だけを更新できる",
+            "ページ全体を更新する",
+            "JavaScriptが不要になる",
+            "CSSが不要になる"
+        ],
+        correct: 0,
+        explanation: "Turbo Framesは指定した領域だけを更新し、高速な画面遷移を実現します。"
+    },
+    {
+        id: 223,
+        level: "上級",
+        category: "Rails 7",
+        question: "Turbo Streamsの用途は？",
+        options: [
+            "WebSocketでページを部分更新",
+            "動画のストリーミング",
+            "音声のストリーミング",
+            "ファイルダウンロード"
+        ],
+        correct: 0,
+        explanation: "Turbo StreamsはWebSocketを使用してリアルタイムでDOMを更新します。"
+    },
+    {
+        id: 224,
+        level: "中級",
+        category: "Rails 7",
+        question: "Import mapsの利点は？",
+        options: [
+            "Node.jsなしでJavaScriptモジュールを管理",
+            "Node.jsが必須になる",
+            "Webpackが必須になる",
+            "JavaScriptが使えなくなる"
+        ],
+        correct: 0,
+        explanation: "Import mapsはビルドステップなしでESモジュールを使用できます。"
+    },
+    {
+        id: 225,
+        level: "上級",
+        category: "Rails 7",
+        question: "Rails 7で encrypted attributes を使うメリットは？",
+        options: [
+            "モデル属性を暗号化して保存",
+            "パスワードが不要になる",
+            "データベースが不要になる",
+            "通信が暗号化される"
+        ],
+        correct: 0,
+        explanation: "encrypted attributesで機密データを暗号化してデータベースに保存します。"
+    },
+    {
+        id: 226,
+        level: "中級",
+        category: "GraphQL",
+        question: "GraphQLをRailsで使う利点は？",
+        options: [
+            "クライアントが必要なデータだけ取得",
+            "REST APIより遅い",
+            "データ取得が固定される",
+            "キャッシュができない"
+        ],
+        correct: 0,
+        explanation: "GraphQLではクライアントが必要なフィールドだけを指定して取得できます。"
+    },
+    {
+        id: 227,
+        level: "上級",
+        category: "GraphQL",
+        question: "graphql-rubyの主な機能は？",
+        options: [
+            "スキーマ定義とリゾルバー実装",
+            "データベース管理",
+            "ビューのレンダリング",
+            "メール送信"
+        ],
+        correct: 0,
+        explanation: "graphql-rubyはGraphQLスキーマとリゾルバーをRubyで実装します。"
+    },
+    {
+        id: 228,
+        level: "中級",
+        category: "Docker",
+        question: "RailsアプリをDockerize する利点は？",
+        options: [
+            "環境の一貫性と移植性",
+            "実行速度の向上",
+            "コードの削減",
+            "テストが不要になる"
+        ],
+        correct: 0,
+        explanation: "Dockerは開発から本番まで一貫した環境を提供します。"
+    },
+    {
+        id: 229,
+        level: "上級",
+        category: "Docker",
+        question: "docker-compose.ymlでRailsアプリを構成する際の一般的なサービスは？",
+        options: [
+            "web, db, redis",
+            "html, css, js",
+            "controller, model, view",
+            "get, post, put"
+        ],
+        correct: 0,
+        explanation: "一般的にweb（Rails）、db（PostgreSQL/MySQL）、redis（キャッシュ/ジョブ）を構成します。"
+    },
+    {
+        id: 230,
+        level: "中級",
+        category: "CI/CD",
+        question: "GitHub ActionsでRailsテストを実行する利点は？",
+        options: [
+            "プッシュ時に自動でテスト実行",
+            "テストが不要になる",
+            "手動テストが速くなる",
+            "ローカルでテストできなくなる"
+        ],
+        correct: 0,
+        explanation: "GitHub Actionsでコード変更時に自動的にテストを実行し品質を保ちます。"
+    },
+    {
+        id: 231,
+        level: "上級",
+        category: "CI/CD",
+        question: "並列テスト実行の利点は？",
+        options: [
+            "テスト実行時間の短縮",
+            "テストコードの削減",
+            "テストの精度向上",
+            "メモリ使用量の削減"
+        ],
+        correct: 0,
+        explanation: "並列実行により大規模なテストスイートも高速に実行できます。"
+    },
+    {
+        id: 232,
+        level: "中級",
+        category: "マイクロサービス",
+        question: "Railsでマイクロサービスを構築する際の考慮点は？",
+        options: [
+            "サービス間通信とデータ一貫性",
+            "モノリスより簡単",
+            "テストが不要",
+            "デプロイが簡単"
+        ],
+        correct: 0,
+        explanation: "マイクロサービスではAPI設計、認証、トランザクション管理が重要です。"
+    },
+    {
+        id: 233,
+        level: "上級",
+        category: "マイクロサービス",
+        question: "サービス間通信で推奨される方式は？",
+        options: [
+            "REST API または gRPC",
+            "直接データベース接続",
+            "ファイル共有",
+            "グローバル変数"
+        ],
+        correct: 0,
+        explanation: "REST APIやgRPCで疎結合なサービス間通信を実現します。"
+    },
+    {
+        id: 234,
+        level: "中級",
+        category: "WebSocket",
+        question: "WebSocketが適している用途は？",
+        options: [
+            "チャット、通知、リアルタイム更新",
+            "静的ページの表示",
+            "ファイルダウンロード",
+            "バッチ処理"
+        ],
+        correct: 0,
+        explanation: "WebSocketは双方向通信でリアルタイム性が求められる機能に適しています。"
+    },
+    {
+        id: 235,
+        level: "上級",
+        category: "WebSocket",
+        question: "Action CableでのScaling戦略は？",
+        options: [
+            "Redisアダプターでサーバー間通信",
+            "単一サーバーのみ使用",
+            "データベースポーリング",
+            "ファイル共有"
+        ],
+        correct: 0,
+        explanation: "Redisアダプターで複数のアプリケーションサーバー間でWebSocket接続を共有します。"
+    },
+    {
+        id: 236,
+        level: "上級",
+        category: "メタプログラミング",
+        question: "method_missingの用途は？",
+        options: [
+            "動的なメソッド処理",
+            "エラー処理",
+            "ログ出力",
+            "データベース接続"
+        ],
+        correct: 0,
+        explanation: "method_missingで未定義メソッドの呼び出しを動的に処理します。"
+    },
+    {
+        id: 237,
+        level: "上級",
+        category: "メタプログラミング",
+        question: "define_methodの利点は？",
+        options: [
+            "実行時にメソッドを動的定義",
+            "メソッドの削除",
+            "クラスの削除",
+            "定数の変更"
+        ],
+        correct: 0,
+        explanation: "define_methodで実行時に動的にメソッドを生成できます。"
+    },
+    {
+        id: 238,
+        level: "中級",
+        category: "Gem開発",
+        question: "Railsエンジンの用途は？",
+        options: [
+            "再利用可能な機能モジュール",
+            "データベースエンジン",
+            "検索エンジン",
+            "JavaScriptエンジン"
+        ],
+        correct: 0,
+        explanation: "Railsエンジンは独立したRailsアプリケーション機能を提供するgemです。"
+    },
+    {
+        id: 239,
+        level: "上級",
+        category: "Gem開発",
+        question: "gemspecファイルの役割は？",
+        options: [
+            "gemのメタデータと依存関係の定義",
+            "テストの実行",
+            "コードの実行",
+            "デプロイの設定"
+        ],
+        correct: 0,
+        explanation: "gemspecはgemの名前、バージョン、依存関係などを定義します。"
+    },
+    {
+        id: 240,
+        level: "上級",
+        category: "アーキテクチャ",
+        question: "イベント駆動アーキテクチャの利点は？",
+        options: [
+            "疎結合で拡張性が高い",
+            "実装が簡単",
+            "デバッグが簡単",
+            "パフォーマンスが必ず向上"
+        ],
+        correct: 0,
+        explanation: "イベント駆動アーキテクチャはコンポーネント間の依存を減らし拡張性を高めます。"
+    },
+
+    // ========== 追加: 実践応用編 (241-260) ==========
+    {
+        id: 241,
+        level: "上級",
+        category: "DDD",
+        question: "Domain-Driven DesignをRailsで実装する際の課題は？",
+        options: [
+            "Active Recordパターンとの調整",
+            "実装が簡単になる",
+            "コードが減る",
+            "テストが不要になる"
+        ],
+        correct: 0,
+        explanation: "DDDの概念とActive Recordパターンの調整が必要です。"
+    },
+    {
+        id: 242,
+        level: "上級",
+        category: "DDD",
+        question: "値オブジェクトの実装方法は？",
+        options: [
+            "Structやカスタムクラスで実装",
+            "Active Recordモデルのみ使用",
+            "文字列のみ使用",
+            "ハッシュのみ使用"
+        ],
+        correct: 0,
+        explanation: "値オブジェクトはStructやPOROで不変性を持たせて実装します。"
+    },
+    {
+        id: 243,
+        level: "中級",
+        category: "サービスオブジェクト",
+        question: "サービスオブジェクトを使う利点は？",
+        options: [
+            "ビジネスロジックの分離と再利用",
+            "モデルが不要になる",
+            "コントローラーが不要になる",
+            "ビューが不要になる"
+        ],
+        correct: 0,
+        explanation: "サービスオブジェクトで複雑なビジネスロジックをカプセル化します。"
+    },
+    {
+        id: 244,
+        level: "中級",
+        category: "サービスオブジェクト",
+        question: "サービスオブジェクトの一般的な命名規則は？",
+        options: [
+            "動詞 + 名詞（CreateOrder等）",
+            "名詞のみ（Order等）",
+            "形容詞 + 名詞（BigOrder等）",
+            "数字 + 名詞（FirstOrder等）"
+        ],
+        correct: 0,
+        explanation: "サービスオブジェクトは実行する動作を表す動詞で始めます。"
+    },
+    {
+        id: 245,
+        level: "上級",
+        category: "フォームオブジェクト",
+        question: "フォームオブジェクトパターンの利点は？",
+        options: [
+            "複雑なフォームロジックの分離",
+            "フォームが不要になる",
+            "バリデーションが不要になる",
+            "データベースが不要になる"
+        ],
+        correct: 0,
+        explanation: "フォームオブジェクトで複数モデルにまたがるフォーム処理を整理します。"
+    },
+    {
+        id: 246,
+        level: "中級",
+        category: "デコレーター",
+        question: "デコレーターパターンの用途は？",
+        options: [
+            "ビューロジックをモデルから分離",
+            "データベース処理",
+            "ルーティング処理",
+            "キャッシュ処理"
+        ],
+        correct: 0,
+        explanation: "デコレーターでプレゼンテーション層のロジックをカプセル化します。"
+    },
+    {
+        id: 247,
+        level: "中級",
+        category: "デコレーター",
+        question: "Draperジェムの役割は？",
+        options: [
+            "デコレーターパターンの実装支援",
+            "データベース管理",
+            "テスト実行",
+            "デプロイ支援"
+        ],
+        correct: 0,
+        explanation: "DraperはRailsでデコレーターパターンを簡単に実装するためのgemです。"
+    },
+    {
+        id: 248,
+        level: "上級",
+        category: "クエリオブジェクト",
+        question: "クエリオブジェクトの利点は？",
+        options: [
+            "複雑なクエリロジックの再利用",
+            "クエリが不要になる",
+            "データベースが速くなる",
+            "モデルが不要になる"
+        ],
+        correct: 0,
+        explanation: "クエリオブジェクトで複雑なデータベースクエリを整理・再利用します。"
+    },
+    {
+        id: 249,
+        level: "中級",
+        category: "ポリシーオブジェクト",
+        question: "Punditジェムの用途は？",
+        options: [
+            "認可ロジックの管理",
+            "認証処理",
+            "ログイン処理",
+            "パスワード管理"
+        ],
+        correct: 0,
+        explanation: "Punditはポリシーオブジェクトで認可ロジックを管理します。"
+    },
+    {
+        id: 250,
+        level: "上級",
+        category: "ポリシーオブジェクト",
+        question: "認可と認証の違いは？",
+        options: [
+            "認証は誰か、認可は何ができるか",
+            "同じ意味",
+            "認可は誰か、認証は何ができるか",
+            "どちらもログイン処理"
+        ],
+        correct: 0,
+        explanation: "認証（Authentication）はユーザー識別、認可（Authorization）は権限確認です。"
+    },
+    {
+        id: 251,
+        level: "上級",
+        category: "イベントソーシング",
+        question: "イベントソーシングの特徴は？",
+        options: [
+            "状態変更を一連のイベントとして保存",
+            "現在の状態のみ保存",
+            "ログを削除",
+            "履歴を保存しない"
+        ],
+        correct: 0,
+        explanation: "イベントソーシングではすべての状態変更をイベントとして記録します。"
+    },
+    {
+        id: 252,
+        level: "上級",
+        category: "CQRS",
+        question: "CQRSパターンの基本概念は？",
+        options: [
+            "読み取りと書き込みの分離",
+            "モデルとビューの統合",
+            "データベースの統合",
+            "APIの統合"
+        ],
+        correct: 0,
+        explanation: "CQRS（Command Query Responsibility Segregation）は読み書きを分離します。"
+    },
+    {
+        id: 253,
+        level: "中級",
+        category: "レート制限",
+        question: "rack-attackの用途は？",
+        options: [
+            "リクエストのレート制限",
+            "データベース攻撃",
+            "ファイル削除",
+            "メモリ攻撃"
+        ],
+        correct: 0,
+        explanation: "rack-attackはDDoS攻撃やブルートフォース攻撃を防ぐレート制限を実装します。"
+    },
+    {
+        id: 254,
+        level: "上級",
+        category: "レート制限",
+        question: "レート制限の実装方法は？",
+        options: [
+            "Token BucketやLeaky Bucket",
+            "無制限アクセス",
+            "IPアドレスブロックのみ",
+            "手動監視"
+        ],
+        correct: 0,
+        explanation: "Token BucketやLeaky Bucketアルゴリズムでレート制限を実装します。"
+    },
+    {
+        id: 255,
+        level: "中級",
+        category: "ファイル処理",
+        question: "CSVファイルをインポートする際の考慮点は？",
+        options: [
+            "バッチ処理とエラーハンドリング",
+            "一度に全件処理",
+            "エラーは無視",
+            "バリデーション不要"
+        ],
+        correct: 0,
+        explanation: "大量データはバッチ処理し、エラー行を適切に処理します。"
+    },
+    {
+        id: 256,
+        level: "上級",
+        category: "ファイル処理",
+        question: "大容量ファイルの処理方法は？",
+        options: [
+            "ストリーミング処理やバックグラウンドジョブ",
+            "メモリに全て読み込み",
+            "処理しない",
+            "分割せずに処理"
+        ],
+        correct: 0,
+        explanation: "ストリーミング処理とバックグラウンドジョブで効率的に処理します。"
+    },
+    {
+        id: 257,
+        level: "中級",
+        category: "検索機能",
+        question: "Elasticsearchを使う利点は？",
+        options: [
+            "全文検索と高速な検索",
+            "SQLより遅い",
+            "データベースが不要",
+            "インデックスが不要"
+        ],
+        correct: 0,
+        explanation: "Elasticsearchは高速な全文検索と複雑な検索クエリを実現します。"
+    },
+    {
+        id: 258,
+        level: "上級",
+        category: "検索機能",
+        question: "searchkickジェムの機能は？",
+        options: [
+            "ElasticsearchのRails統合",
+            "データベース検索",
+            "ファイル検索",
+            "コード検索"
+        ],
+        correct: 0,
+        explanation: "searchkickはElasticsearchをRailsで簡単に使うためのgemです。"
+    },
+    {
+        id: 259,
+        level: "上級",
+        category: "マルチテナント",
+        question: "マルチテナントアーキテクチャの実装方法は？",
+        options: [
+            "スキーマ分離、データベース分離、行レベル分離",
+            "単一データベースのみ",
+            "ファイル分離",
+            "URL分離のみ"
+        ],
+        correct: 0,
+        explanation: "要件に応じてスキーマ、データベース、行レベルでテナントを分離します。"
+    },
+    {
+        id: 260,
+        level: "上級",
+        category: "マルチテナント",
+        question: "Apartmentジェムの用途は？",
+        options: [
+            "PostgreSQLスキーマでテナント分離",
+            "住居管理",
+            "ユーザー管理",
+            "セッション管理"
+        ],
+        correct: 0,
+        explanation: "ApartmentはPostgreSQLのスキーマを使ってマルチテナントを実装します。"
+    },
+
+    // ========== 追加: 最新トレンド編 (261-280) ==========
+    {
+        id: 261,
+        level: "上級",
+        category: "ViewComponent",
+        question: "ViewComponentの利点は？",
+        options: [
+            "再利用可能でテスタブルなビューコンポーネント",
+            "パーシャルより遅い",
+            "テストできない",
+            "Ruby不要"
+        ],
+        correct: 0,
+        explanation: "ViewComponentはRubyクラスとしてビューコンポーネントを定義し、単体テストが可能です。"
+    },
+    {
+        id: 262,
+        level: "中級",
+        category: "ViewComponent",
+        question: "ViewComponentとパーシャルの違いは？",
+        options: [
+            "ViewComponentはRubyクラスで定義",
+            "同じもの",
+            "パーシャルの方が高機能",
+            "ViewComponentはERB不要"
+        ],
+        correct: 0,
+        explanation: "ViewComponentはRubyクラスとして定義され、明示的なインターフェースを持ちます。"
+    },
+    {
+        id: 263,
+        level: "上級",
+        category: "StimulusReflex",
+        question: "StimulusReflexの特徴は？",
+        options: [
+            "サーバーサイドでリアクティブUI",
+            "クライアントサイドのみ",
+            "JavaScriptフレームワーク",
+            "CSSフレームワーク"
+        ],
+        correct: 0,
+        explanation: "StimulusReflexはサーバーサイドでリアクティブなUIを構築します。"
+    },
+    {
+        id: 264,
+        level: "中級",
+        category: "AnyCable",
+        question: "AnyCableの利点は？",
+        options: [
+            "Action Cableより高性能",
+            "Action Cableより遅い",
+            "WebSocket不要",
+            "Ruby不要"
+        ],
+        correct: 0,
+        explanation: "AnyCableはGoで実装されWebSocket接続を効率的に処理します。"
+    },
+    {
+        id: 265,
+        level: "上級",
+        category: "Kredis",
+        question: "Kredisの用途は？",
+        options: [
+            "Redisデータ構造の高レベルアクセス",
+            "データベース管理",
+            "ファイル管理",
+            "メール送信"
+        ],
+        correct: 0,
+        explanation: "KredisはRedisのデータ構造をActive Modelのように扱えます。"
+    },
+    {
+        id: 266,
+        level: "中級",
+        category: "Propshaft",
+        question: "PropshaftとSprocketsの違いは？",
+        options: [
+            "Propshaftはより軽量でシンプル",
+            "Propshaftの方が複雑",
+            "機能は同じ",
+            "Sprocketsの方が新しい"
+        ],
+        correct: 0,
+        explanation: "PropshaftはRails 7で導入された軽量なアセットパイプラインです。"
+    },
+    {
+        id: 267,
+        level: "上級",
+        category: "Solid Queue",
+        question: "Solid Queueの特徴は？",
+        options: [
+            "データベースベースのジョブキュー",
+            "Redisが必須",
+            "メモリベース",
+            "ファイルベース"
+        ],
+        correct: 0,
+        explanation: "Solid QueueはデータベースをバックエンドとするActive Jobアダプターです。"
+    },
+    {
+        id: 268,
+        level: "中級",
+        category: "Mission Control",
+        question: "Mission Control - Jobsの用途は？",
+        options: [
+            "ジョブキューの監視と管理",
+            "デプロイ管理",
+            "ログ管理",
+            "データベース管理"
+        ],
+        correct: 0,
+        explanation: "Mission Control - JobsはActive Jobのキューを視覚的に監視・管理します。"
+    },
+    {
+        id: 269,
+        level: "上級",
+        category: "Kamal",
+        question: "Kamalの役割は？",
+        options: [
+            "Dockerコンテナのデプロイツール",
+            "テストフレームワーク",
+            "データベース管理",
+            "ログ管理"
+        ],
+        correct: 0,
+        explanation: "Kamal（旧MRSK）はDockerコンテナを本番環境にデプロイするツールです。"
+    },
+    {
+        id: 270,
+        level: "中級",
+        category: "Trilogy",
+        question: "Trilogyアダプターの特徴は？",
+        options: [
+            "GitHubが開発した高速MySQLクライアント",
+            "PostgreSQL用",
+            "SQLite用",
+            "MongoDB用"
+        ],
+        correct: 0,
+        explanation: "TrilogyはGitHubが開発した高性能なMySQL接続アダプターです。"
+    },
+    {
+        id: 271,
+        level: "上級",
+        category: "Sorbet",
+        question: "SorbetをRailsで使う利点は？",
+        options: [
+            "静的型チェックでバグを防ぐ",
+            "実行速度の向上",
+            "コード量の削減",
+            "テスト不要"
+        ],
+        correct: 0,
+        explanation: "Sorbetは段階的な型チェックでRubyコードの安全性を高めます。"
+    },
+    {
+        id: 272,
+        level: "中級",
+        category: "RBS",
+        question: "RBSファイルの用途は？",
+        options: [
+            "Rubyの型定義",
+            "データベース定義",
+            "ビュー定義",
+            "ルーティング定義"
+        ],
+        correct: 0,
+        explanation: "RBS（Ruby Signature）はRubyの型情報を記述するファイル形式です。"
+    },
+    {
+        id: 273,
+        level: "上級",
+        category: "Packwerk",
+        question: "Packwerkの目的は？",
+        options: [
+            "モジュール境界の強制",
+            "パッケージ管理",
+            "デプロイ管理",
+            "テスト管理"
+        ],
+        correct: 0,
+        explanation: "Packwerkはアプリケーションをモジュールに分割し、依存関係を管理します。"
+    },
+    {
+        id: 274,
+        level: "中級",
+        category: "Lookbook",
+        question: "Lookbookの用途は？",
+        options: [
+            "ViewComponentのプレビューとドキュメント",
+            "データベース管理",
+            "ログ表示",
+            "パフォーマンス監視"
+        ],
+        correct: 0,
+        explanation: "LookbookはViewComponentのインタラクティブなプレビュー環境を提供します。"
+    },
+    {
+        id: 275,
+        level: "上級",
+        category: "Falcon",
+        question: "FalconサーバーとPumaの違いは？",
+        options: [
+            "Falconは非同期I/Oに特化",
+            "Pumaの方が速い",
+            "機能は同じ",
+            "Falconは同期処理のみ"
+        ],
+        correct: 0,
+        explanation: "Falconは非同期I/Oとファイバーを活用した高性能サーバーです。"
+    },
+    {
+        id: 276,
+        level: "中級",
+        category: "Avo",
+        question: "Avoフレームワークの用途は？",
+        options: [
+            "管理画面の自動生成",
+            "API生成",
+            "テスト生成",
+            "マイグレーション生成"
+        ],
+        correct: 0,
+        explanation: "AvoはRailsアプリケーションの管理画面を自動生成します。"
+    },
+    {
+        id: 277,
+        level: "上級",
+        category: "Hotwire Native",
+        question: "Hotwire Nativeの特徴は？",
+        options: [
+            "Webビューでネイティブアプリを構築",
+            "完全ネイティブコード",
+            "React Native使用",
+            "Flutter使用"
+        ],
+        correct: 0,
+        explanation: "Hotwire Native（旧Turbo Native）はWebビューでiOS/Androidアプリを構築します。"
+    },
+    {
+        id: 278,
+        level: "中級",
+        category: "Phlex",
+        question: "Phlexフレームワークの特徴は？",
+        options: [
+            "RubyでHTMLを構築するビューフレームワーク",
+            "JavaScriptフレームワーク",
+            "CSSフレームワーク",
+            "テストフレームワーク"
+        ],
+        correct: 0,
+        explanation: "PhlexはRubyクラスとメソッドでHTMLを生成するフレームワークです。"
+    },
+    {
+        id: 279,
+        level: "上級",
+        category: "Vitess",
+        question: "VitessとRailsの統合メリットは？",
+        options: [
+            "MySQLの水平スケーリング",
+            "垂直スケーリングのみ",
+            "PostgreSQL対応",
+            "NoSQL化"
+        ],
+        correct: 0,
+        explanation: "VitessはMySQLの水平スケーリングを実現するミドルウェアです。"
+    },
+    {
+        id: 280,
+        level: "上級",
+        category: "エッジコンピューティング",
+        question: "Rails on the Edgeの利点は？",
+        options: [
+            "CDNエッジでの動的コンテンツ生成",
+            "サーバー不要",
+            "データベース不要",
+            "静的サイトのみ"
+        ],
+        correct: 0,
+        explanation: "エッジコンピューティングでユーザーに近い場所で動的コンテンツを生成します。"
+    },
+
+    // ========== 追加: 実装パターン編 (281-300) ==========
+    {
+        id: 281,
+        level: "上級",
+        category: "認証実装",
+        question: "パスキー認証の利点は？",
+        options: [
+            "パスワードレスで高セキュリティ",
+            "パスワードより弱い",
+            "実装が簡単",
+            "ブラウザ非対応"
+        ],
+        correct: 0,
+        explanation: "パスキーは生体認証やデバイス認証でパスワードレス認証を実現します。"
+    },
+    {
+        id: 282,
+        level: "中級",
+        category: "認証実装",
+        question: "2要素認証（2FA）の実装方法は？",
+        options: [
+            "TOTP（Time-based One-Time Password）",
+            "パスワードのみ",
+            "メールのみ",
+            "IPアドレス制限のみ"
+        ],
+        correct: 0,
+        explanation: "TOTPはGoogle Authenticator等のアプリで時間ベースのワンタイムパスワードを生成します。"
+    },
+    {
+        id: 283,
+        level: "上級",
+        category: "キャッシュ戦略",
+        question: "ロシアンドールキャッシングとは？",
+        options: [
+            "ネストされたフラグメントキャッシュ",
+            "データベースキャッシュ",
+            "メモリキャッシュ",
+            "ファイルキャッシュ"
+        ],
+        correct: 0,
+        explanation: "ロシアンドールキャッシングは入れ子構造のフラグメントキャッシュで効率化します。"
+    },
+    {
+        id: 284,
+        level: "中級",
+        category: "キャッシュ戦略",
+        question: "キャッシュキーにバージョンを含める理由は？",
+        options: [
+            "キャッシュの無効化を制御",
+            "キャッシュサイズ削減",
+            "キャッシュ速度向上",
+            "メモリ節約"
+        ],
+        correct: 0,
+        explanation: "バージョン付きキャッシュキーで変更時に自動的にキャッシュを更新します。"
+    },
+    {
+        id: 285,
+        level: "上級",
+        category: "データベース最適化",
+        question: "カウンターキャッシュの実装方法は？",
+        options: [
+            "counter_cacheオプションで関連数を保存",
+            "毎回COUNT実行",
+            "メモリで管理",
+            "ファイルで管理"
+        ],
+        correct: 0,
+        explanation: "counter_cacheは関連レコード数をカラムに保存してCOUNTクエリを避けます。"
+    },
+    {
+        id: 286,
+        level: "中級",
+        category: "データベース最適化",
+        question: "楽観的ロックの実装方法は？",
+        options: [
+            "lock_versionカラムで同時更新を検出",
+            "データベースロック",
+            "ファイルロック",
+            "メモリロック"
+        ],
+        correct: 0,
+        explanation: "lock_versionカラムで更新時の競合を検出し、同時更新を防ぎます。"
+    },
+    {
+        id: 287,
+        level: "上級",
+        category: "非同期処理",
+        question: "イベントドリブンジョブの実装方法は？",
+        options: [
+            "after_commitコールバックでジョブ起動",
+            "before_saveで起動",
+            "同期処理のみ",
+            "cron実行"
+        ],
+        correct: 0,
+        explanation: "after_commitでトランザクション完了後にジョブを起動し、一貫性を保ちます。"
+    },
+    {
+        id: 288,
+        level: "中級",
+        category: "非同期処理",
+        question: "バックグラウンドジョブの冪等性を保証する方法は？",
+        options: [
+            "ユニークIDで重複実行を防ぐ",
+            "何度でも実行",
+            "一度だけ実行を保証できない",
+            "手動で管理"
+        ],
+        correct: 0,
+        explanation: "ジョブIDやユニークキーで重複実行を検出し、冪等性を保証します。"
+    },
+    {
+        id: 289,
+        level: "上級",
+        category: "API設計",
+        question: "GraphQL N+1問題の解決方法は？",
+        options: [
+            "DataLoaderでバッチロード",
+            "個別にクエリ実行",
+            "キャッシュのみ使用",
+            "解決できない"
+        ],
+        correct: 0,
+        explanation: "DataLoaderパターンでクエリをバッチ化してN+1問題を解決します。"
+    },
+    {
+        id: 290,
+        level: "中級",
+        category: "API設計",
+        question: "APIレスポンスのページネーション実装は？",
+        options: [
+            "カーソルベースまたはオフセットベース",
+            "全件返却",
+            "ランダム返却",
+            "固定件数のみ"
+        ],
+        correct: 0,
+        explanation: "大量データはカーソルベースまたはオフセットベースでページ分割します。"
+    },
+    {
+        id: 291,
+        level: "上級",
+        category: "リアルタイム",
+        question: "Server-Sent Events（SSE）とWebSocketの違いは？",
+        options: [
+            "SSEは単方向、WebSocketは双方向",
+            "SSEは双方向、WebSocketは単方向",
+            "機能は同じ",
+            "SSEの方が高機能"
+        ],
+        correct: 0,
+        explanation: "SSEはサーバーからクライアントへの単方向通信、WebSocketは双方向通信です。"
+    },
+    {
+        id: 292,
+        level: "中級",
+        category: "リアルタイム",
+        question: "Action Cableでの認証実装方法は？",
+        options: [
+            "Connectionクラスで認証",
+            "認証不要",
+            "クライアント側で認証",
+            "データベースで認証"
+        ],
+        correct: 0,
+        explanation: "Connectionクラスのidentified_byメソッドで接続時の認証を実装します。"
+    },
+    {
+        id: 293,
+        level: "上級",
+        category: "ログ管理",
+        question: "構造化ログの利点は？",
+        options: [
+            "機械的な解析が容易",
+            "人間が読みやすい",
+            "ファイルサイズが小さい",
+            "実装が簡単"
+        ],
+        correct: 0,
+        explanation: "JSON形式等の構造化ログは検索・分析・監視が容易です。"
+    },
+    {
+        id: 294,
+        level: "中級",
+        category: "ログ管理",
+        question: "センシティブ情報のログフィルタリング方法は？",
+        options: [
+            "filter_parametersで除外",
+            "すべてログ出力",
+            "ログを無効化",
+            "手動で削除"
+        ],
+        correct: 0,
+        explanation: "filter_parametersでパスワード等のセンシティブ情報をログから除外します。"
+    },
+    {
+        id: 295,
+        level: "上級",
+        category: "メトリクス",
+        question: "カスタムメトリクスの実装方法は？",
+        options: [
+            "StatsD や Prometheus クライアント",
+            "puts文で出力",
+            "ログファイルのみ",
+            "データベースのみ"
+        ],
+        correct: 0,
+        explanation: "StatsDやPrometheusクライアントでカスタムメトリクスを収集・送信します。"
+    },
+    {
+        id: 296,
+        level: "中級",
+        category: "メトリクス",
+        question: "RED メトリクスとは？",
+        options: [
+            "Rate, Errors, Duration",
+            "Read, Edit, Delete",
+            "Ruby, Erlang, Docker",
+            "Request, Event, Data"
+        ],
+        correct: 0,
+        explanation: "REDメトリクス（Rate/Errors/Duration）はサービスの健全性を測る指標です。"
+    },
+    {
+        id: 297,
+        level: "上級",
+        category: "障害対策",
+        question: "サーキットブレーカーパターンの用途は？",
+        options: [
+            "連鎖的な障害を防ぐ",
+            "障害を増幅する",
+            "サービスを停止する",
+            "データを削除する"
+        ],
+        correct: 0,
+        explanation: "サーキットブレーカーは外部サービスの障害が連鎖するのを防ぎます。"
+    },
+    {
+        id: 298,
+        level: "中級",
+        category: "障害対策",
+        question: "グレースフルシャットダウンの実装方法は？",
+        options: [
+            "SIGTERMをトラップして処理完了を待つ",
+            "即座に終了",
+            "プロセスをkill",
+            "電源を切る"
+        ],
+        correct: 0,
+        explanation: "SIGTERMシグナルをトラップし、実行中の処理を完了してから終了します。"
+    },
+    {
+        id: 299,
+        level: "上級",
+        category: "スケーリング",
+        question: "読み取り専用レプリカの活用方法は？",
+        options: [
+            "読み取りクエリを分散",
+            "書き込みを分散",
+            "バックアップのみ",
+            "使用しない"
+        ],
+        correct: 0,
+        explanation: "読み取り専用レプリカに読み取りクエリを分散して負荷を軽減します。"
+    },
+    {
+        id: 300,
+        level: "上級",
+        category: "スケーリング",
+        question: "データベースシャーディングの課題は？",
+        options: [
+            "クロスシャードのJOINが困難",
+            "実装が簡単",
+            "パフォーマンス低下",
+            "データ整合性向上"
+        ],
+        correct: 0,
+        explanation: "シャーディングではシャード間のJOINやトランザクションが複雑になります。"
     }
 ];
